@@ -45,6 +45,7 @@ class InterviewController extends Controller
        $socials = SocialPosts::whereHas('group', function ($query) use ($request) {
             $query->Where('type', 'like', '%' . $request->type . '%');
         })->paginate(15);
+        
         return view('interview.index', compact('socials','type'));
 
     }
