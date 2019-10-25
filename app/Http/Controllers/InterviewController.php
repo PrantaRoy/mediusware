@@ -22,8 +22,9 @@ class InterviewController extends Controller
     function search(Request $request)
     {
         $type = SocialPostGroups::distinct()->get();
-       $query= $request->name;
-        $socials = SocialPosts::orWhere('id', 'like', '%' . $query . '%')->paginate(15);
+        $socials = SocialPosts::whereHas('group', function ($query) use ($request) {
+           $query->Where('name', 'like', '%' . $request->name . '%')->orWhere('type', 'like', '%' . $request->name . '%');
+       })->paginate(15);
         return view('interview.index', compact('socials','type'));
 
     }
