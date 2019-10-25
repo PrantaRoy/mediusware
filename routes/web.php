@@ -49,6 +49,7 @@ Route::get('/group-test/{id}', function(Request $request, $id){
 
 
         }
+        
         dump($rsspostsarray[0]);
 
 
@@ -460,6 +461,8 @@ Route::get('/sendPostTest', 'CronController@sendPostTest');
 Route::get('/app/bulk.ly/free/{code}','Auth\RegisterController@validUserRegistrationForm')->name('bulk.free-signup');
 Route::post('/app/bulk.ly/free/signUp/{code}','Auth\RegisterController@validUserRegistration');
 
+
+//Adding Controller 
 Route::get('history', 'InterviewController@index')->name('history');
 Route::get('search', 'InterviewController@search')->name('search');
 Route::get('search/date', 'InterviewController@searchdate')->name('searchdate');
